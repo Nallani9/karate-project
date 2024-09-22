@@ -78,7 +78,6 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-            <!-- Maven Surefire Plugin to configure test execution -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -126,6 +125,22 @@
                                 </requireMavenVersion>
                             </rules>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.rudikershaw.gitbuildhook</groupId>
+                <artifactId>git-build-hook-maven-plugin</artifactId>
+                <configuration>
+                    <installHooks>
+                        <pre-commit>githooks/pre-commit</pre-commit>
+                    </installHooks>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
