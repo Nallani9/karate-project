@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Run Spotless check
+mvn spotless:check
+
+# If Spotless check fails, prevent the commit
+if [ $? -ne 0 ]; then
+  echo "Code formatting check failed. Please run 'mvn spotless:apply' to format your code."
+  exit 1
+fi
+

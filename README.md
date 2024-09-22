@@ -3,6 +3,11 @@
 Karate example project - 1.5.0 
 
 ## Run Project
+
+````Maven
+mvn clean install
+````
+
 ````Bash
 mvn clean spring-boot:run
 ````
@@ -32,14 +37,19 @@ mvn archetype:generate \
 -DartifactId=karate-project
 ```
 ### Required
+**Note: Enforced by maven enforcer plugin**
+
 * Java 21
 * Maven 3
 
-## Usage
 
-```maven
-mvn clean test -Denv=local -DclientId=test -DclientSecret=test
-```
+## Spotless Usage
+**NOTE: Project is formatted using spotless and git pre commit**
+
+````Shell
+mvn spotless:check
+mvn spotless:apply
+````
 
 ### Terminate Port:
 
