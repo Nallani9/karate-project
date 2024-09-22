@@ -1,6 +1,15 @@
-# karate
+# Karate Spring Boot Project
 
-Karate example project
+Karate example project - 1.5.0 
+
+## Run Project
+````Bash
+mvn clean spring-boot:run
+````
+
+```Bash
+mvn clean test -Denv=local -DclientId=test -DclientSecret=test
+````
 
 ## Installation
 
@@ -22,13 +31,21 @@ mvn archetype:generate \
 -DgroupId=com.nallani \
 -DartifactId=karate-project
 ```
+### Required
+* Java 21
+* Maven 3
 
 ## Usage
 
-```python
-mvn clean test
+```maven
+mvn clean test -Denv=local -DclientId=test -DclientSecret=test
 ```
 
-## License
+### Terminate Port:
 
-[MIT](https://choosealicense.com/licenses/mit/)
+````shell
+netstat -ano | findstr :8080
+````
+````shell
+taskkill //PID 22280 //F
+````

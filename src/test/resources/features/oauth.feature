@@ -2,7 +2,7 @@ Feature: Get OAuth Token
   Background:
     * url oauthBaseUrl
   Scenario: Obtain OAuth Token
-    Given path '/oauth'
+    Given path '/oauth/v1'
     And header Content-Type = 'application/x-www-form-urlencoded'
     And form field client_id = clientId
     And form field client_secret = clientSecret

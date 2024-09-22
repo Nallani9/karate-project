@@ -1,6 +1,5 @@
 function fn() {
 	var env = karate.env;
-
 	karate.log('karate.env system property was:', env);
 
 	if (!env || !['dit', 'dev', 'uat', 'qa', 'pac', 'perf', 'prod'].includes(env)) {
@@ -17,7 +16,7 @@ function fn() {
 
 	var config = {
 		ssl: {
-			trustStore: 'classpath: truststore.jks'
+			trustStore: 'classpath:truststore.jks'
 		}
 	};
 	karate.configure('ssl', {
@@ -25,24 +24,24 @@ function fn() {
 	});
 
 	if (env == 'local') {
-		config.baseUrl = 'https://localhost:8443';
-		config.oauthBaseUrl = 'https://localhost:8443/oauth';
+		config.baseUrl = 'http://localhost:8080';
+		config.oauthBaseUrl = 'http://localhost:8080';
 		config.clientId = clientId;
 		config.clientSecret = clientSecret;
 	} else if (env == 'dit' || env == 'dev') {
-		config.baseUrl = 'https://localhost:8443';
-		config.oauthBaseUrl = 'https://localhost:8443/oauth';
+		config.baseUrl = 'http://localhost:8080';
+		config.oauthBaseUrl = 'http://localhost:8080';
 		config.clientId = clientId;
 		config.clientSecret = clientSecret;
 	} else if (env == 'uat' || env == 'qa') {
-		config.baseUrl = 'https://localhost:8443';
-		config.oauthBaseUrl = 'https://localhost:8443/oauth';
+		config.baseUrl = 'http://localhost:8080';
+		config.oauthBaseUrl = 'http://localhost:8080';
 		config.clientId = clientId;
 		config.clientSecret = clientSecret;
 	}
 
 	if (!karate.properties['accessToken']) {
-		var authResponse = karate.callSingle('classpath: features/oauth_token..feature', {
+		var authResponse = karate.callSingle('classpath:features/oauth.feature', {
 			oauthBaseUrl: config.oauthBaseUrl,
 			clientId: config.clientId,
 			clientSecret: config.clientSecret
